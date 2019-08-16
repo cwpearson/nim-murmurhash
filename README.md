@@ -5,8 +5,8 @@ A pure-nim implementation of murmur hash
 Adapted from https://github.com/aappleby/smhasher
 
 - Murmur3
- - [ ] MurmurHash3_x86_32
- - [ ] MurmurHash3_x86_128 (see [vitanim](https://github.com/timotheecour/vitanim/blob/master/murmur/murmur.nim))
+  - [ ] MurmurHash3_x86_32
+  - [ ] MurmurHash3_x86_128 (see [vitanim](https://github.com/timotheecour/vitanim/blob/master/murmur/murmur.nim))
 - Murmur2
   - [ ] MurmurHash2 (32-bit, x86) - The original version; contains a flaw that weakens collision in some cases.
   - [ ] MurmurHash2A (32-bit, x86) - A fixed variant using Merkle–Damgård construction construction. Slightly slower.
