@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/cwpearson/nim-murmur.svg?branch=master)](https://travis-ci.org/cwpearson/nim-murmur)
 
-A pure-nim implementation of MurmurHash
+A pure-nim implementation of MurmurHash. Has MurmurHash3 and MurmurHash2, and does not wrap a C implementation.
 
 Adapted from https://github.com/aappleby/smhasher
 
@@ -41,5 +41,6 @@ Only two functions implemented currently.
 
 ## Related:
 
-A murmur3 is implemented in [vitanim](https://github.com/timotheecour/vitanim/blob/master/murmur/murmur.nim) by timotheecour
-A nim wrapper for a c implemention of murmur3 is implemented in [nimrod-murmur](https://github.com/boydgreenfield/nimrod-murmur) by boydgreenfield
+* nimble `murmur` package https://github.com/olahol/nimrod-murmur/. Doesn't have Murmur3 or Murmur2.
+* [vitanim](https://github.com/timotheecour/vitanim/blob/master/murmur/murmur.nim) by timotheecour. Pure nim murmur3 only. Not set up as a package.
+* nimble `murmur3` package https://github.com/boydgreenfield/nimrod-murmur. Wraps a c implementation.
