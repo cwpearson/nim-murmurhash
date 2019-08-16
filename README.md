@@ -11,7 +11,7 @@ Adapted from https://github.com/aappleby/smhasher
 put something like
 
 ```
-requires "https://github.com/cwpearson/nim-murmur#5a64553"
+requires "https://github.com/cwpearson/nim-murmur#1fce9fd"
 ```
 
 in your nimble file, and then

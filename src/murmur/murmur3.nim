@@ -124,3 +124,20 @@ proc MurmurHash3_x64_128*[T: SomeInteger](x: T, seed = 0'u32): auto =
 
 proc MurmurHash3_x64_128*(x: pointer, len: int, seed = 0'u32): auto =
     MurmurHash3_x64_128(cast[ptr uint8](x), len, seed)
+
+when isMainModule:
+    import times
+    import strformat
+
+
+    proc toSeconds(d: Duration): float =
+        float(d.inNanoseconds) / 1e9
+
+    let bytes = 10_000_000
+    let a = newSeq[byte](bytes)
+
+    for i in 0..4:
+        let start = now()
+        discard MurmurHash3_x64_128(unsafeAddr a[0], bytes)
+        let elapsed = toSeconds(now() - start)
+        echo &"{float(bytes) / elapsed / 1024 / 1024:2.2e} MB/s"
