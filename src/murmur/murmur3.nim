@@ -9,7 +9,7 @@ template `[]`*[T](p: ptr T, off: int): T =
     (p + off)[]
 
 
-proc fmix64 (x: uint64): uint64 {.inline.} =
+proc fmix64 (x: uint64): uint64 {.inline, noinit.} =
     var k = x
     k ^= k shr 33
     k *= 0xff51afd7ed558ccd'u64
@@ -125,6 +125,11 @@ proc MurmurHash3_x64_128*[T: SomeInteger](x: T, seed = 0'u32): auto =
 proc MurmurHash3_x64_128*(x: pointer, len: int, seed = 0'u32): auto =
     MurmurHash3_x64_128(cast[ptr uint8](x), len, seed)
 
+proc MurmurHash3_x64_128*[T](x: openArray[T], seed = 0'u32): auto =
+    let data = unsafeAddr x[0]
+    let len = len(x) * sizeof(T)
+    MurmurHash3_x64_128(data, len, seed)
+
 when isMainModule:
     import times
     import strformat
@@ -138,6 +143,6 @@ when isMainModule:
 
     for i in 0..4:
         let start = now()
-        discard MurmurHash3_x64_128(unsafeAddr a[0], bytes)
+        discard MurmurHash3_x64_128(a)
         let elapsed = toSeconds(now() - start)
         echo &"{float(bytes) / elapsed / 1024 / 1024:2.2e} MB/s"

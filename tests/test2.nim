@@ -6,6 +6,7 @@
 # To run these tests, simply execute `nimble test`.
 
 import unittest
+import strutils
 
 import murmur
 test "equal":
@@ -13,4 +14,4 @@ test "equal":
 test "not equal":
   check MurmurHash64A(1'u64) != MurmurHash64A(1'u32)
 test "seed":
-  check MurmurHash64A(1,0'u64) != MurmurHash64A(1,1'u64)
+  check MurmurHash64A(1, 0'u64) != MurmurHash64A(1, 1'u64)

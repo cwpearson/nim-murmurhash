@@ -62,6 +62,11 @@ proc MurmurHash64A*[T: SomeInteger](x: T, seed = 0'u64): auto =
 proc MurmurHash64A*(x: pointer, len: int, seed = 0'u64): auto =
     MurmurHash64A(cast[ptr uint8](x), len, seed)
 
+proc MurmurHash64A*[T](x: openArray[T], seed = 0'u64): auto =
+    let data = unsafeAddr x[0]
+    let len = len(x) * sizeof(T)
+    MurmurHash64A(data, len, seed)
+
 when isMainModule:
     import times
     import strformat
@@ -71,10 +76,10 @@ when isMainModule:
         float(d.inNanoseconds) / 1e9
 
     let bytes = 10_000_000
+    let a = newSeq[byte](bytes)
 
     for i in 0..4:
-        let a = newSeq[byte](bytes)
         let start = now()
-        discard MurmurHash64A(unsafeAddr a[0], bytes)
+        discard MurmurHash64A(a)
         let elapsed = toSeconds(now() - start)
         echo &"{float(bytes) / elapsed / 1024 / 1024:2.2e} MB/s"
