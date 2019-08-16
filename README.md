@@ -1,5 +1,7 @@
 # nim-murmur
 
+[![Build Status](https://travis-ci.org/cwpearson/nim-murmur.svg?branch=master)](https://travis-ci.org/cwpearson/nim-murmur)
+
 A pure-nim implementation of MurmurHash
 
 Adapted from https://github.com/aappleby/smhasher
