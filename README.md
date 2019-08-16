@@ -42,3 +42,4 @@ Only two functions implemented currently.
 ## Related:
 
 A murmur3 is implemented in [vitanim](https://github.com/timotheecour/vitanim/blob/master/murmur/murmur.nim) by timotheecour
+A nim wrapper for a c implemention of murmur3 is implemented in [nimrod-murmur](https://github.com/boydgreenfield/nimrod-murmur) by boydgreenfield
