@@ -8,7 +8,7 @@
 import unittest
 import strutils
 
-import murmur
+import murmurhash
 test "equal":
   check MurmurHash3_x64_128(1) == MurmurHash3_x64_128(1)
 test "not equal":
