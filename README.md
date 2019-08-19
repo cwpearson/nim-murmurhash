@@ -1,6 +1,6 @@
 # nim-murmur
 
-[![Build Status](https://travis-ci.org/cwpearson/nim-murmur.svg?branch=master)](https://travis-ci.org/cwpearson/nim-murmur)
+[![Build Status](https://travis-ci.org/cwpearson/nim-murmurhash.svg?branch=master)](https://travis-ci.org/cwpearson/nim-murmurhash)
 
 A pure-nim implementation of MurmurHash. Has MurmurHash3 and MurmurHash2, and does not wrap a C implementation.
 
@@ -8,16 +8,22 @@ Adapted from https://github.com/aappleby/smhasher
 
 ## Using
 
-put something like
+This is in the nimble package manager as `murmurhash`, so you can put
 
 ```
-requires "https://github.com/cwpearson/nim-murmur#1fce9fd"
+requires murmurhash>=0.4.0
 ```
 
-in your nimble file, and then
+in your nimble file. Or, to pin to a particuar commit, do
+
+```
+requires "https://github.com/cwpearson/nim-murmurhash#b44ed52"
+```
+
+then,
 
 ```nim
-import murmur
+import murmurhash
 ```
 
 ## About
