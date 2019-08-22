@@ -1,4 +1,5 @@
 import bitops
+import strformat
 
 template `^=`(a, b) = a = a xor b
 
@@ -66,6 +67,8 @@ proc MurmurHash3_x64_128*(key: ptr uint8, len: int, seed: uint32 = 0): array[2, 
         k1: uint64 = 0
         k2: uint64 = 0
 
+    echo &"before tail: h1, h2 = {h1} {h2}"
+
     var state = len and 15
     while true:
         case state:
@@ -99,6 +102,8 @@ proc MurmurHash3_x64_128*(key: ptr uint8, len: int, seed: uint32 = 0): array[2, 
             assert false
         dec(state)
 
+    echo &"after tail: h1, h2 = {h1} {h2}"
+
     # finalization
 
     h1 ^= len.uint64
@@ -112,6 +117,8 @@ proc MurmurHash3_x64_128*(key: ptr uint8, len: int, seed: uint32 = 0): array[2, 
 
     h1 += h2
     h2 += h1
+
+    echo &"after final: h1,h2 = {h1} {h2}"
 
     result[0] = h1
     result[1] = h2
